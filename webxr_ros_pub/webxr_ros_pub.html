@@ -180,19 +180,31 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       gl = null;
     }
 
+    var lastTime = 0;  // Global
+
     function onXRFrame(t, frame) {
+      
+      let currentTime = performance.now();
+      let deltaTime = (currentTime - lastTime) / 1000; // convert to seconds
+      lastTime = currentTime;
+
+      // Use deltaTime for your calculations
+
+
       let session = frame.session;
       session.requestAnimationFrame(onXRFrame);
 
       gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer);
 
       let pose = frame.getViewerPose(xrRefSpace);
+
       if (pose) {
         const p = pose.transform.position;
         const o = pose.transform.orientation;
         document.getElementById('pose').innerText = "" +
           "Position: " + p.x.toFixed(3) + ", " + p.y.toFixed(3) + ", " + p.z.toFixed(3) + "\n" +
-          "Orientation: " + o.x.toFixed(3) + ", " + o.y.toFixed(3) + ", " + o.z.toFixed(3) + ", " + o.w.toFixed(3) + "\n";
+          "Orientation: " + o.x.toFixed(3) + ", " + o.y.toFixed(3) + ", " + o.z.toFixed(3) + ", " + o.w.toFixed(3) + "\n"
+          "Time delta: " + deltaTime.toFixed(3) + "s\n";
 
         if (ros) {
           // want to publish pose in REP-103 compliant manner
