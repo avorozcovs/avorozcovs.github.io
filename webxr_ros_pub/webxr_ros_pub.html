@@ -246,10 +246,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           // Check if the pose is valid
           if (pose) {
             // Get the position and orientation of the input source
-            const p = pose.transform.position;
-            const o = pose.transform.orientation;
-            pose_text += "Controller Position: " + p.x.toFixed(3) + ", " + p.y.toFixed(3) + ", " + p.z.toFixed(3) + "\n" +
-              "Controller Orientation: " + o.x.toFixed(3) + ", " + o.y.toFixed(3) + ", " + o.z.toFixed(3) + ", " + o.w.toFixed(3) + "\n";
+            const c_p = pose.transform.position;
+            const c_o = pose.transform.orientation;
+            pose_text += "Controller Position: " + c_p.x.toFixed(3) + ", " + c_p.y.toFixed(3) + ", " + c_p.z.toFixed(3) + "\n" +
+              "Controller Orientation: " + c_o.x.toFixed(3) + ", " + c_o.y.toFixed(3) + ", " + c_o.z.toFixed(3) + ", " + c_o.w.toFixed(3) + "\n";
           }
         });
       }
