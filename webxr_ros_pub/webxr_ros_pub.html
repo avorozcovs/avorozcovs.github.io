@@ -190,13 +190,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
       // Use deltaTime for your calculations
 
-
       let session = frame.session;
       session.requestAnimationFrame(onXRFrame);
 
       gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer);
 
-      pose_text = "Position: (null pose)";
+      let pose_text = "Position: (null pose)";
 
       let pose = frame.getViewerPose(xrRefSpace);
       if (pose) {
@@ -248,10 +247,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           // Check if the pose is valid
           if (pose) {
             // Get the position and orientation of the input source
-            const position = pose.transform.position;
-            const orientation = pose.transform.orientation;
-            pose_text += "Controller Position: " + position.x.toFixed(3) + ", " + position.y.toFixed(3) + ", " + position.z.toFixed(3) + "\n" +
-              "Controller Orientation: " + orientation.x.toFixed(3) + ", " + orientation.y.toFixed(3) + ", " + orientation.z.toFixed(3) + ", " + orientation.w.toFixed(3) + "\n";
+            const p = pose.transform.position;
+            const o = pose.transform.orientation;
+            pose_text += "Controller Position: " + p.x.toFixed(3) + ", " + p.y.toFixed(3) + ", " + p.z.toFixed(3) + "\n" +
+              "Controller Orientation: " + o.x.toFixed(3) + ", " + o.y.toFixed(3) + ", " + o.z.toFixed(3) + ", " + o.w.toFixed(3) + "\n";
           }
         });
 
