@@ -64,6 +64,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     var ros = null;
     var poseStampedTopic = null;
+    var lastTime = 0;  // Global
 
     // connect to rosbridge when connect button pressed
     document.getElementById("rosbridge_settings_form").onsubmit = function () {
@@ -180,8 +181,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       gl = null;
     }
 
-    var lastTime = 0;  // Global
-
     function onXRFrame(t, frame) {
       
       let currentTime = performance.now();
@@ -253,8 +252,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               "Controller Orientation: " + o.x.toFixed(3) + ", " + o.y.toFixed(3) + ", " + o.z.toFixed(3) + ", " + o.w.toFixed(3) + "\n";
           }
         });
-
       }
+    
       document.getElementById('pose').innerText = pose_text;
     }
 
